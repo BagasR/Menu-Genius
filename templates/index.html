@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Genius</title>
+
+    <!-- CSS -->
+	<link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap.min.css') }} type="text/css">
+	<link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}  type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/custom.css') }} 
+    type="text/css">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+     <!-- css card di form option-->
+  <link rel="stylesheet1" href={{ url_for('static', filename='/css/bootstrap.min1.css') }} 
+  type="text/css">
+    <link rel="stylesheet1" href={{ url_for('static', filename='/css/docs.css') }} 
+  type="text/css">
+
+    <!-- JavaScript -->
+	<script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }} ></script>
+	<script src={{ url_for('static', filename='/js/bootstrap_3.4.1.min.js') }} ></script>
+    <!-- javascript card di form option-->
+  <script src={{ url_for('static', filename='/js/bootstrap.bundle1.min.js') }} ></script>
+</head>
+<body id="halamanku" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!-- Navigation Bar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+      
+			<!-- Logo -->
+			<div class="navbar-header row">
+        <br>
+				<a class="navbar-brand" href="#halamanku"> MENU GENIUS</a>
+			</div>
+
+	    <!-- Daftar Halaman -->
+      <div class="collapse navbar-collapse" id="myNavbar"><ul class="nav navbar-nav navbar-right">
+				  <li><a href="#informasi">INFORMASI</a></li>
+				  <li><a href="#pencarian">PENCARIAN</a></li>
+				  <li><a href="#anggotakelompok">ANGGOTA</a></li>
+          </ul>
+        </div>
+		</div>
+	</nav>
+
+    <!-- Bagian Halaman (Informasi) -->
+	<div id="informasi" class="container-fluid">
+		<br>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-sm-6">
+				<!-- Deskripsi Aplikasi -->
+        <img 
+          src={{ url_for('static', filename='/images/logofood.png') }} alt="Logo" 
+				width="170" height="150">
+        <br>
+        <br>
+        <h4>Sistem Prediksi Menu Restoran</h4> 
+				<p style="text-align: justify;text-justify: inter-word;">
+					Selamat datang di Genius. Aplikasi ini akan membantu anda dalam pencarian restoran berdasarkan lokasi, rating, jenis tempat dan rentang harga nya. Solusi ini dapat dengan mudah menemukan makanan dan restoran sesuai dengan pilihan Anda.
+                    Ingin cari tahu nama restoran anda? coba cek dibawah ya.
+				</p>
+				<br>
+            
+            <!-- Tombol Mulai -->
+				<nav id="navgo" class="navbar" style="background-color:#ffffff;z-index: 0;border:none">
+					<ul class="nav nav-pills" >
+						<li class="nav-item">
+							<a class="btn btn-default btn-lg" href="#pencarian" style="background-color:#000000;color:#ffffff ">Mulai</a>
+						</li>
+					</ul>
+				</nav>
+      </div>
+
+      <div class="col-sm-6">
+        <br>
+				<br>
+				<!-- Gambar Deskripsi Aplikasi -->
+				<img 
+          style="border-radius: 1em;"
+          src={{ url_for('static', filename='/images/logomakanan.jpg') }} width="500" ></img>
+          </div>
+          </div>
+      </div>
+
+      <!-- Bagian Halaman (Aplikasi) -->
+	<div id="pencarian" data-bs-spy="scroll" data-bs-target="#navgo" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-sm-12">
+				</br>
+				<!-- Input Nilai Pengukuran dari Pengguna -->
+        <div class= "container">
+          <h3 style="margin-left: px;"><b>Masukkan data Restoran</b></h3>
+        </div>
+        <div class="container">
+  				
+            <div class="opt-group">
+  
+              <div class="container">
+                <form action="app/app.py" class="w-100 form-lokasi">
+                  <label for="lokasi" style="width:100%;">Lokasi Anda</label>
+                  <select name="lokasi" id="lokasi" class="select-app" >
+                    <optgroup label="Lokasi">
+                      <option classname ="opt" value="Lokasi">Lokasi</option>
+                      <option classname ="opt" value="0">Kecamatan Baiturrahman</option>
+                      <option classname ="opt" value="1">Kecamatan Banda Raya</option>
+                      <option classname ="opt" value="2">Kecamatan Jaya Baru</option>
+                      <option classname ="opt" value="3">Kecamatan Kuta Alam</option>
+                      <option classname ="opt" value="4">Kecamatan Kuta Raja</option>
+                      <option classname ="opt" value="5">Kecamatan Lueng Bata</option>
+                      <option classname ="opt" value="6">Kecamatan Meuraxa</option>
+                      <option classname ="opt" value="7">Kecamatan Syiah Kuala</option>
+                      <option classname ="opt" value="8">Kecamatan Ulee Kareng</option>
+                    </optgroup>
+                  </select>
+                </form>
+                
+              
+              </div>
+              <br/>
+
+              <div class="d-flex justify-content-around"></div>
+                <div class="container mult-opt">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <form action="app/app.py">
+                      <label for="cars">Jenis Tempat</label>
+                      <select name="tempat" id="tempat" class="select-app">
+                        <optgroup label="tempat">
+                          <option classname ="opt" value="tempat">Tempat</option>
+                          <option classname ="opt" value="Cafe">Cafe</option>
+                          <option classname ="opt" value="Restoran">Restoran</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <form action="app/app.py">
+                      <label for="cars">Rentang Harga</label>
+                      <select name="rentang_harga" id="harga" class="select-app">
+                        <optgroup label="harga">
+                          <option classname ="opt" value="JH">Jumlah Harga</option>
+                          <option classname ="opt" value="1">10000</option>
+                          <option classname ="opt" value="2">15000</option>
+                          <option classname ="opt" value="3">20000</option>
+                          <option classname ="opt" value="4">25000</option>
+                          <option classname ="opt" value="5">30000</option>
+                          <option classname ="opt" value="6">35000</option>
+                          <option classname ="opt" value="7">40000</option>
+                          <option classname ="opt" value="8">45000</option>
+                          <option classname ="opt" value="9">50000</option>
+                          <option classname ="opt" value="10">55000</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <form action="app/app.py">
+                      <label for="cars">Jenis Makanan</label>
+                      <select name="Jenis_Makan" id="harga" class="select-app">
+                        <optgroup label="harga">
+                          <option classname ="opt" value="JM">Jenis Makanan</option>
+                          <option classname ="opt" value="1">Jajanan</option>
+                          <option classname ="opt" value="2">Bakso</option>
+                          <option classname ="opt" value="3">Minuman</option>
+                          <option classname ="opt" value="4">Seafood</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <form action="app/app.py">
+                      <label for="cars">Rating</label>
+                      <select name="rating" id="tempat" class="select-app">
+                        <optgroup label="rating">
+                          <option classname ="opt" value="rating">Ratimg</option>
+                          <option classname ="opt" value="1">1</option>
+                          <option classname ="opt" value="2">2</option>
+                          <option classname ="opt" value="3">3</option>
+                          <option classname ="opt" value="4">4</option>
+                          <option classname ="opt" value="5">5</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+          <br>
+        <div class="row"
+          style="
+          display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+          padding-top: 5px;
+          ">
+          <button type="submit" id="prediksi_submit" class="btn btn-default btn-lg">Prediksi</button>
+        </div>
+      </div>
+    <div class="container">
+      <div class="col">
+      <br>
+      <h3 style="margin-left: 50px;"><b>Hasil Prediksi :   </b></h3>
+      <div id="hasil_prediksi" align="center">
+                      <!-- Hasil Prediksi akan ditampilkan di sini-->
+      </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+<section  class= "container rekomendasi">
+    <h3 id="why-us" style="margin-left: 50px;"><b>Rekomendasi Restoran yang sesuai dengan anda</b></h3>
+    <!-- <div class="col card card-rekomendasi" id="hasil_rekomendasi" style="width: 18rem;">
+      
+    </div> -->
+
+    <ul class="property-list" id="hasil_rekomendasi">
+      
+    </ul>
+    
+  </section>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+  <!-- Bagian Anggota Kelompok  -->
+  
+  <div id="anggotakelompok" class="container mt-5">
+    <h3 class="mt-5"><b>Anggota Kelompok</b></h3>
+  </div>
+
+<section class="review" id="review">
+    <h1 class="heading">
+    </h1>
+    <div class="swiper-container review-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/') }} alt="img_tamam">
+                    <h3>Teuku Tamam Alfatah</h3>
+                    <p>Informatika</p>
+                    <p>-</p>
+                  
+                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="#" style="color:#000000 ;border-color: #000000;"> Github</a>
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;"> Linkedln</a>
+               
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/') }}  alt="img_kodri">
+                    <h3>Kodriyansyah</h3>
+                    <p>Sistem Informasi</p>
+                    <p></p>
+                  
+                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Github</a>
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
+                
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/bagas.png') }} alt="img_bagas" >
+                    <h3>Bagaskara Dwi Rizky</h3>
+                    <p>STMIK Kaputama | Teknik Informatika</p>
+                    <p>-</p>
+                  
+                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="https://github.com/BagasR" style="color:#000000 ;border-color: #000000;"> Github</a>
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="https://www.linkedin.com/in/bagaskara-dwi-rizky" style="color:#000000 ;border-color: #000000;"> Linkedln</a>
+                
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/') }} alt="img_azmi">
+                    <h3>Tengku Azmi</h3>
+                    <p></p>
+                    <p>-</p>
+                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;"> Linkedln</a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/') }} alt="img_nisa" >
+                    <h3>Khairunnisak</h3>
+                    <p></p>
+                    <p></p>
+                  <a class="github-btn btn btn-default btn-lg fa-brands fa-instagram" href="#" style="color:#000000 ;border-color: #000000;"> Instagram</a>
+                  
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src={{ url_for('static', filename='/images/') }} alt="img_sintia">
+                    <h3>Sintia Kristi Damanik</h3>
+                    <p></p>
+                    <p></p>
+                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="#" style="color:#000000 ;border-color: #000000;"> Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+	<!-- Footer -->
+	<footer class="container-fluid footer">
+        <div class="footer-left">
+          <h3>MENU GENIUS</h3>
+          <ul>
+            <li><a href="#halamanku" style="color:#ffffff">Perusahaan</a></li><br>
+            <li><a href="#halamanku" style="color:#ffffff">Tentang Kami</a></li><br>
+            <li><a href="#halamanku" style="color:#ffffff">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+            
+    
+            <div class="footer-center">
+                <p><span>Hubungi Kami</span></p>
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Indonesia</span> Sumatera Utara</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+62 ********</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="#">Genius@gmail.com</a></p>
+                </div>
+            </div>
+    
+            <div class="footer-right">
+                <p class="footer-about">
+                    <span>About</span>
+                    Genius akan membantu memprediksi restoran dan memberikan rekomendasi menu makanan sesuai dengan keinginan Anda.
+                </p>
+    
+                <div class="footer-media">
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-solid fa-code"></i></a>
+                </div>
+            </div>
+    
+            <a href="#halamanku" title="To Top">
+                <span class="glyphicon glyphicon-chevron-up col-xs-12 text-right"></span>
+            </a>
+        <div class="container text-center">
+            <p>Kelompok Exploration 2 <br><a href="#">Exploration 2 Orbit</a></p>
+        </div>
+        </footer>
+    
+        <!-- JavaScript untuk Animasi Scroll dan Prediksi Model -->
+        <script  src={{ url_for('static', filename='/js/client_side.js') }}></script>
+</body>
+</html>
