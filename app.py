@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask, render_template, request, jsonify
+from flask_ngrok import run_with_ngrok
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 from joblib import load
@@ -73,7 +74,7 @@ def apiDeteksi():
             "CR_Angka": [input_cr_angka]
         })
 
-        hasil_prediksi = model.predict(df[0:2])[0]
+        hasil_prediksi = model.predict(df[0:1])[0]
 
         # Filter hasil prediksi sesuai dengan kondisi tertentu
         # Misalnya, hanya restoran dengan hasil prediksi >= 0.5 yang diberikan
@@ -146,4 +147,5 @@ if __name__ == '__main__':
     model = load('resto.model')
 
     # Run Flask di Google Colab menggunakan ngrok
-    app.run(host="0.0.0.0", port=4000, debug=True)
+run_with_ngrok(app)
+app.run()
