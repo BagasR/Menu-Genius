@@ -29,48 +29,41 @@
   
   // Fungsi untuk memanggil API ketika tombol prediksi ditekan
   $("#prediksi_submit").click(function(e) {
-    e.preventDefault();
-	
-	// Set data pengukuran bunga iris dari input pengguna
- //  var input_sepal_length = $("#range_sepal_length").val(); 
-	// var input_sepal_width  = $("#range_sepal_width").val(); 
-	// var input_petal_length = $("#range_petal_length").val(); 
-	// var input_petal_width  = $("#range_petal_width").val(); 
+    e.preventDefault(); 
 
-    var input_lokasi = $("#lokasi").val(); 
-    var input_Luas_Tanah = $("#luas_tanah").val();
-    var input_Luas_Bangunan = $("#luas_bangunan").val();
-    var input_Kamar_Tidur = $("#kamar_tidur").val(); 
-    var input_Kamar_Mandi = $("#kamar_mandi").val();
-    var input_Listrik = $("#listrik").val();
-    var input_Garasi = $("#garasi").val();
+    var input_harga_rata = $("#rentang_harga").val(); 
+    var input_rating = $("#rating").val();
+    var input_kecamatan = $("#kecamatan").val();
+    var input_kabupaten = $("#kabupaten").val(); 
+    var input_cr_angka = $("#crangka").val();
 
 	// Panggil API dengan timeout 1 detik (1000 ms)
     setTimeout(function() {
 	  try {
 			$.ajax({
-			  url  : "/api/prediksi",
+			  url  : "/api/deteksi",
 			  type : "POST",
 			  data : {
-          "lokasi" : input_lokasi,
-          "luas_tanah" : input_Luas_Tanah,
-          "luas_bangunan" : input_Luas_Bangunan,
-          "kamar_tidur"  : input_Kamar_Tidur,
-          "kamar_mandi"  : input_Kamar_Mandi,
-          "listrik"  : input_Listrik,
-          "garasi" : input_Garasi,
+          "Harga_Rata-rata" : input_harga_rata,
+          "rating" : input_rating,
+          "kecamatan" : input_kecamatan,
+          "kabupaten"  : input_kabupaten,
+          "crangka"  : input_cr_angka,
         },
 			  success:function(res){
-				// Ambil hasil prediksi spesies dan path gambar spesies dari API
+				// Ambil hasil prediksi 
 				res_data_prediksi   = res['prediksi']
-        res_data_rekomendasi = res['rekomendasi']
+        res_data_nama_restoran = res['nama_restoran']
+        res_data_menu_makanan = res['menu_makanan']
+        res_data_alamat = res['alamat']
+        res_data_harga = res['harga']
+        res_data_rekomendasi_restoran = res['rekomendasi_restoran']
 				// res_gambar_prediksi = res['gambar_prediksi']
 
           console.log(res_data_prediksi)
-          console.log('test data rekomendasi \n', res_data_rekomendasi)
+          console.log('test data rekomendasi \n', res_data_nama_restoran)
 				// Tampilkan hasil prediksi ke halaman web
-			    generate_prediksi(res_data_prediksi);
-          generate_rekomendasi(res_data_rekomendasi);
+			    generate_prediksi(res_data_prediksi, res_data_nama_restoran, res_data_menu_makanan, res_data_alamat, res_data_harga, res_data_rekomendasi_restoran);
 			  }
 			});
 		}
@@ -84,193 +77,28 @@
   })
     
   // Fungsi untuk menampilkan hasil prediksi model
-  function generate_prediksi(data_prediksi) {
-    var str_prediksi="";
-    // str += "<img src='" + image_prediksi + "' width=\"200\" height=\"150\"></img>";
-    str_prediksi += "<h3>" +"Harga rumah impian anda adalah sebesar "+ "<br> <br>" +data_prediksi + "</h3>";
-    $("#hasil_prediksi").html(str_prediksi);
+  function generate_prediksi(data_prediksi, data_nama_restoran, data_menu_makanan, data_alamat, data_harga, rekomendasi_restoran) {
+    var str_prediksi = "";
+    str_prediksi += "<h3><b>Nama restoran   : <b>" + data_nama_restoran + "</h3>";
+    str_prediksi += "<h3><b>Menu Makanan   : <b>" + data_menu_makanan + "</h3>";
+    str_prediksi += "<h3><b>Alamat restoran : <b>" + data_alamat + "</h3>";
+    str_prediksi += "<h3><b>Harga : <b>" + data_harga + "</h3>";
+    
+    var rekomendasi_str = "";
+    for (var i = 0; i < rekomendasi_restoran.length; i++) {
+        rekomendasi_str += "<p>" + rekomendasi_restoran[i].nama_restoran + " - " + rekomendasi_restoran[i].menu_makanan + " - " + rekomendasi_restoran[i].alamat + " - " + rekomendasi_restoran[i].kecamatan + " - " + rekomendasi_restoran[i].harga + "</p>";
+    }
+    var hasilRekomendasi = document.getElementById("hasil_rekomendasi");
+    hasilRekomendasi.innerHTML = rekomendasi_str;
 
-  }  
-
-  // Fungsi untuk menampilkan hasil rekomendasi model
-  function generate_rekomendasi(data_rekomendasi) {
-
-    var table = document.getElementById('hasil_rekomendasi')
-    console.log(`isi dari elemen table ${table}`)
-    var obj_json = JSON.parse(data_rekomendasi);
-    var row = "";
-    table.innerHTML = row;
-    var count = 0;
-    obj_json.forEach((data) => {
-      console.log(`Iterasi ke-${count}`)
-      console.log(`Lokasi : ${data.lokasi}`);
-      console.log(`Luas Tanah : ${data.LT}`);
-      console.log(`Luas Bangunan : ${data.LB}`);
-      console.log(`Kamar Tidur : ${data.KT}`);
-      console.log(`Tipe Listrik : ${data.listrik}`);
-      console.log(`Apakah ada garasi? : ${data.garasi_carport}`);
-
-      // Referensi Encoding pada Notebook
-      // 'Kota Jakarta':0,
-      // 'Kota Bogor':1,
-      // 'Kabupaten Bogor':2,
-      // 'Kota Depok':3,
-      // 'Kota Tangerang':4,
-      // 'Kota Bekasi':5,
-      // 'Kabupaten Bekasi':6
-
-      
-      var str_lokasi;
-      console.log(`Cek data.lokasi : ${data.lokasi}`)
-      switch(data.lokasi) {
-        case 0:
-          // code block
-          str_lokasi = 'Kota Jakarta';
-          break;
-        case 1:
-          // code block
-          str_lokasi = 'Kota Bogor';
-          break;
-        case 2:
-          // code block
-          str_lokasi = 'Kabupaten Bogor';
-          break;
-        case 3:
-          // code block
-          str_lokasi = 'Kota Depok';
-          break;
-        case 4:
-          // code block
-          str_lokasi = 'Kota Tangerang';
-          break;
-        case 5:
-          // code block
-          str_lokasi = 'Kota Bekasi';
-          break;
-        case 6:
-          // code block
-          str_lokasi = 'Kabupaten Bekasi';
-          break;
-        default:
-          // code block
-          console.log('Input Lokasi yang diinput salah!')
-      }
-      
-      console.log(`Cek str_lokasi : ${str_lokasi}`);
-      
-      var str_garasi;
-      switch(data.garasi_carport) {
-        case 0:
-          // code block
-          str_garasi = 'Ada'
-          break;
-        case 1:
-          // code block
-          str_garasi = 'Tidak Ada'
-          break;
-        default:
-          // code block
-          console.log('Input Garasi Salah!')
-      }
-      
-      row = `
-        <li>
-  				<div class="card-content">
-  					<h3 class="h3">
-  						<a class="card-title">
-  							${str_lokasi}
-  						</a>
-  					</h3>
-  					<ul class="card-list">
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-chart-area">
-  								</a>
-  							</div>
-  
-  							<span class="item-text">${data.LT} m²</span>
-  						</li>
-  
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-cube">
-  								</a>
-  							</div>
-  
-  							<span class="item-text">${data.LB} m²</span>
-  						</li>
-  
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-bed">
-  								</a>
-  							</div>
-  							<span class="item-text">${data.KT} KT</span>
-  						</li>
-  
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-bath">
-  								</a>
-  							</div>
-  							<span class="item-text">${data.KM} KM</span>
-  						</li>
-  
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-bolt">
-  								</a>
-  							</div>
-  							<span class="item-text">${data.listrik}</span>
-  						</li>
-  
-  						<li class="card-item">
-  							<div class="item-icon">
-  								<a class="fa-solid fa-warehouse">
-  								</a>
-  							</div>
-  							<span class="item-text">${str_garasi}</span>
-  						</li>
-  					</ul>
-  
-  					<div class="card-meta">
-  						<div>
-  							<span class="meta-title">Harga</span>
-  							<span class="meta-text">Rp ${new Intl.NumberFormat('en-US').format(data.harga)}</span>
-  						</div>
-  					</div>
-  				</div>
-        </li>
-        `
-
-      // <div class="detail-rekomendasi" >
-      //   <i class="fa-solid fa-house"></i>
-      //     <div class="card-body">
-      //       <h5 class="card-title">Rumah x</h5>
-      //       <p class="card-text">Rumah test.</p>
-      //     </div>
-      //     <ul class="list-group list-group-flush">
-      //       <li class="list-group-item">Lokasi : ${str_lokasi}</li>
-      //       <li class="list-group-item">Luas Tanah : ${data.LT} M2</li>
-      //       <li class="list-group-item">Luas Bangunan : ${data.LB} M2</li>
-      //       <li class="list-group-item">Jumlah Kamar Tidur${data.KT}</li>
-      //       <li class="list-group-item">Tipe Listrik : ${data.listrik}</li>
-      //       <li class="list-group-item">Apakah ada garasi? : ${str_garasi}</li>
-      //       <li class="list-group-item">Harga Rumah : ${data.harga}</li>
-      //     </ul>
-      //   </div>
-      console.log(table);
-
-      table.innerHTML += row
-    });
-
-      
-    // console.log(typeof(data_rekomendasi));
-
-    // $("#tabel_rekomendasi").html(str_rekomendasi);
-
-    count+=1;
-
-  } 
+    $("#hasil_prediksi").html(str_prediksi)
+}
 })
+
+console.log("Input Harga Rata-rata:", input_harga_rata);
+console.log("Input Rating:", input_rating);
+console.log("Input Kecamatan:", input_kecamatan);
+console.log("Input Kabupaten:", input_kabupaten);
+console.log("Input CR Angka:", input_cr_angka);
+
   
