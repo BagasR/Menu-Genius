@@ -147,5 +147,5 @@ if __name__ == '__main__':
     model = load('resto.model')
 
     # Run Flask di Google Colab menggunakan ngrok
-run_with_ngrok(app)
-app.run()
+    run_with_ngrok(app)
+    app.run()
