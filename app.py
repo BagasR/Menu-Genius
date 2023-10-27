@@ -1,8 +1,8 @@
-import numpy as np
-from flask import Flask, render_template, request, jsonify
+from flask import Flask,render_template,request,jsonify
 from flask_ngrok import run_with_ngrok
-from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier
 from joblib import load
 
 app = Flask(__name__, static_url_path='/static')
