@@ -1,5 +1,4 @@
 from flask import Flask,render_template,request,jsonify
-from flask_ngrok import run_with_ngrok
 import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
@@ -147,5 +146,4 @@ if __name__ == '__main__':
     model = load('resto.model')
 
     # Run Flask di Google Colab menggunakan ngrok
-    run_with_ngrok(app)
     app.run()
