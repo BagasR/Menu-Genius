@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from joblib import load
 
-app = Flask(__name__, static_url_path='/static')
+app   = Flask(__name__, static_url_path='/static')
 model = None
 
 # Baca data nama restoran dari file CSV

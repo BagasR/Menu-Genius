@@ -31,6 +31,12 @@ footer {
     }
 }
 
+.nav__toggle {
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
 .footer .footer-left {
     width: 30%;
 }
@@ -163,5 +169,5 @@ footer {
     .footer .footer-center i {
         margin-left: 0px;
     }
-
+}
   /* css dari slider rekomendasi*/
