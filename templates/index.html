@@ -5,52 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Genius</title>
 
+    <!-- Icon -->
+	  <link rel="shortcut icon" href="{{ url_for('static', filename='logogenius.ico') }}">
+
     <!-- CSS -->
     <link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap.min.css') }} type="text/css">
-    <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}  type="text/css">   
-    <link rel="stylesheet" href={{ url_for('static', filename='/css/custom.css') }} 
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}  type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/custom.css') }}
     type="text/css">
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- =====BOX ICONS===== -->
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/boxicons.min.css') }} type="text/css">
+
      <!-- css card di form option-->
-    
-    <link rel="stylesheet1" href={{ url_for('static', filename='/css/docs.css') }} 
+
+    <link rel="stylesheet1" href={{ url_for('static', filename='/css/docs.css') }}
     type="text/css">
 
     <!-- JavaScript -->
 	<script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }} ></script>
 	<script src={{ url_for('static', filename='/js/bootstrap_3.4.1.min.js') }} ></script>
-  
+
 </head>
 <body id="halamanku" data-spy="scroll" data-target=".navbar" data-offset="60">
 
     <!-- Navigation Bar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
-      
+
 			<!-- Logo -->
 			<div class="navbar-header row">
-        <img 
-          src={{ url_for('static', filename='/images/LogoGenius.png') }} alt="Orbit Logo" 
+        <img
+          src={{ url_for('static', filename='/images/LogoGenius.png') }} alt="Orbit Logo"
 				width="50" height="50" align="left">
         <br>
 				<a class="navbar-brand" href="#halamanku" style="font-family: Helvetica;"> MENU GENIUS</a>
 			</div>
 
 	    <!-- Daftar Halaman -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-				  <li><a href="#informasi">INFORMASI</a></li>
-				  <li><a href="#pencarian">PENCARIAN</a></li>
-				  <li><a href="#anggotakelompok">ANGGOTA</a></li>
-          </ul>
-        </div>
-		</div>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a style="color: white;" href="#informasi">INFORMASI</a></li>
+      <li><a style="color: white;" href="#pencarian">PENCARIAN</a></li>
+      <li><a style="color: white;" href="#anggotakelompok">ANGGOTA</a></li>
+      </ul>
+    </div>
+  </nav>
+
 	</nav>
-  <div class="menu" id="nav-toggle">
-    <i class='bx bx-menu'></i>
-</div>
+
     <!-- Bagian Halaman (Informasi) -->
 	<div id="informasi" class="container-fluid">
 		<br>
@@ -59,18 +69,18 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<!-- Deskripsi Aplikasi -->
-        <img 
-          src={{ url_for('static', filename='/images/LogoGenius2.png') }} alt="Logo" 
+        <img
+          src={{ url_for('static', filename='/images/LogoGenius2.png') }} alt="Logo"
 				width="170" height="170">
         <br>
         <br>
-        <h4>Sistem Prediksi Menu Restoran</h4> 
+        <h4>Sistem Prediksi Menu Restoran</h4>
 				<p style="text-align: justify;text-justify: inter-word;">
 					Selamat datang di Menu Genius. Aplikasi ini akan membantu anda dalam pencarian restoran berdasarkan lokasi, rating, jenis tempat dan rentang harga nya. Solusi ini dapat dengan mudah menemukan makanan dan restoran sesuai dengan pilihan Anda.
           Ingin cari tahu nama restoran anda? coba cek dibawah ya.
 				</p>
 				<br>
-            
+
             <!-- Tombol Mulai -->
 				<nav id="navgo" class="navbar" style="background-color:#ffffff;z-index: 0;border:none">
 					<ul class="nav nav-pills" >
@@ -85,7 +95,7 @@
         <br>
 				<br>
 				<!-- Gambar Deskripsi Aplikasi -->
-				<img 
+				<img
           style="border-radius: 1em;"
           src={{ url_for('static', filename='/images/logomakanan.jpg') }} width="500" ></img>
           </div>
@@ -116,8 +126,8 @@
                     </optgroup>
                   </select>
                 </form>
-                
-              
+
+
               </div>
               <br/>
 
@@ -153,16 +163,6 @@
                           <option classname ="opt" value="40000">40000</option>
                           <option classname ="opt" value="45000">45000</option>
                           <option classname ="opt" value="50000">50000</option>
-                          <option classname ="opt" value="55000">55000</option>
-                          <option classname ="opt" value="55000">60000</option>
-                          <option classname ="opt" value="55000">65000</option>
-                          <option classname ="opt" value="55000">70000</option>
-                          <option classname ="opt" value="55000">75000</option>
-                          <option classname ="opt" value="55000">80000</option>
-                          <option classname ="opt" value="55000">85000</option>
-                          <option classname ="opt" value="55000">90000</option>
-                          <option classname ="opt" value="55000">95000</option>
-                          <option classname ="opt" value="55000">100000</option>
                         </optgroup>
                       </select>
                     </form>
@@ -211,8 +211,6 @@
       </div>
     <div class="container">
       <div class="col">
-      <br>
-      <h3 style="margin-left: 50px;"><b>Hasil Prediksi :   </b></h3>
       <div id="hasil_prediksi" align="center">
                       <!-- Hasil Prediksi akan ditampilkan di sini-->
       </div>
@@ -227,15 +225,15 @@
 <br>
 
 <section  class= "container rekomendasi">
-    <h3 id="why-us" style="margin-left: 50px;"><b>Rekomendasi Restoran yang sesuai dengan anda</b></h3>
+    <h3 id="why-us" style="margin-left: 50px;"><b>Rekomendasi Restoran yang sesuai dengan anda :</b></h3>
     <!-- <div class="col card card-rekomendasi" id="hasil_rekomendasi" style="width: 18rem;">
-      
+
     </div> -->
 
     <ul class="property-list" id="hasil_rekomendasi">
-      
+
     </ul>
-    
+
   </section>
       <br>
       <br>
@@ -247,7 +245,7 @@
       <br>
 
   <!-- Bagian Anggota Kelompok  -->
-  
+
   <div id="anggotakelompok" class="container mt-5">
     <h3 class="mt-5"><b>Anggota Kelompok</b></h3>
   </div>
@@ -259,66 +257,68 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/') }} alt="img_tamam">
+                    <img src={{ url_for('static', filename='/images/tengkutamam.JPG') }} alt="img_tamam">
                     <h3>Teuku Tamam Alfatah</h3>
                     <p>Universitas Syiah Kuala | Informatika</p>
-                    <p>-</p>
-                  
-                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Github</a>
+                    <p>ML Engineer</p>
+
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
                     <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
-               
+
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/') }}  alt="img_kodri">
+                    <img src={{ url_for('static', filename='/images/kodri.png') }}  alt="img_kodri">
                     <h3>Kodriyansyah</h3>
                     <p>Universitas Malikussaleh | Sistem Informasi</p>
-                    <p></p>
-                  
-                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Github</a>
+                    <p> UI/UX Designer</p>
+
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="https://www.instagram.com/bagaskaradwi_rizky?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
                     <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
-                
+
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/bagas.png') }} alt="img_bagas" >
+                    <img src={{ url_for('static', filename='/images/bagaskara.jpeg') }} alt="img_bagas" >
                     <h3>Bagaskara Dwi Rizky</h3>
                     <p>STMIK Kaputama | Teknik Informatika</p>
-                    <p>-</p>
-                  
-                    <a class="github-btn btn btn-default btn-lg fa-brands fa-github" href="https://github.com/BagasR" style="color:#000000 ;border-color: #000000;" target="blank"> Github</a>
-                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="https://www.linkedin.com/in/bagaskara-dwi-rizky" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
-                
+                    <p>Backend Engineer</p>
+
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="https://www.instagram.com/bagaskaradwi_rizky?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="https://www.linkedin.com/in/bagaskara-dwi-rizky/" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
+
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/') }} alt="img_azmi">
+                    <img src={{ url_for('static', filename='/images/azmi.png') }} alt="img_azmi">
                     <h3>Tengku Azmi</h3>
                     <p>Universitas Malikussaleh | Teknik Elektro</p>
-                    <p>-</p>
-                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
+                    <p>Frontend Engineer</p>
+                    <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="https://www.instagram.com/tengkuazmi345/" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
+                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="https://www.linkedin.com/in/tengku-azmi-485063280/" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/') }} alt="img_nisa" >
+                    <img src={{ url_for('static', filename='/images/nisa.png') }} alt="img_nisa" >
                     <h3>Khairunnisak</h3>
                     <p>Universitas Abulyatama | Ekonomi Pembangunan</p>
-                    <p></p>
+                    <p>Data Engineer</p>
                   <a class="github-btn btn btn-default btn-lg fa-brands fa-instagram" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
-                  
+
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="box">
-                    <img src={{ url_for('static', filename='/images/') }} alt="img_sintia">
+                    <img src={{ url_for('static', filename='/images/sintia.jpg') }} alt="img_sintia">
                     <h3>Sintia Kristi Damanik</h3>
                     <p>Universitas Alwashliyah | Manajemen</p>
-                    <p></p>
-                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="#" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
+                    <p>Technical Writter</p>
+                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-instagram" href="https://instagram.com/sintiapristi_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" style="color:#000000 ;border-color: #000000;" target="blank"> Instagram</a>
+                  <a class="github-btn btn btn-default btn-lg fa fa-brands fa-linkedin" href="https://www.linkedin.com/in/sintia-kristi-damanik/" style="color:#000000 ;border-color: #000000;" target="blank"> Linkedln</a>
                 </div>
             </div>
         </div>
@@ -336,8 +336,8 @@
             <li><a href="#halamanku" style="color:#ffffff">Kebijakan Privasi</a></li>
           </ul>
         </div>
-            
-    
+
+
             <div class="footer-center">
                 <p><span>Hubungi Kami</span></p>
                 <div>
@@ -350,31 +350,31 @@
                 </div>
                 <div>
                     <i class="fa fa-envelope"></i>
-                    <p><a href="#">Genius@gmail.com</a></p>
+                    <p><a href="#">menugenius@gmail.com</a></p>
                 </div>
             </div>
-    
+
             <div class="footer-right">
                 <p class="footer-about">
                     <span>About</span>
                     Genius akan membantu memprediksi restoran dan memberikan rekomendasi menu makanan sesuai dengan keinginan Anda.
                 </p>
-    
+
                 <div class="footer-media">
                     <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
-    
+
             <a href="#halamanku" title="To Top">
                 <span class="glyphicon glyphicon-chevron-up col-xs-12 text-right"></span>
             </a>
         <div class="container text-center">
-            <p>Kelompok Exploration 2 <br><a href="#">Exploration 2 Orbit</a></p>
+            <p style="color: white;">Kelompok Exploration 2</p>
         </div>
         </footer>
-    
+
         <!-- JavaScript untuk Animasi Scroll dan Prediksi Model -->
         <script  src={{ url_for('static', filename='/js/client_side.js') }}></script>
 </body>

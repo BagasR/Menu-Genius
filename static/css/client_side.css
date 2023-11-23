@@ -39,7 +39,7 @@
 body {
 	font: 400 15px Lato, sans-serif;
 	line-height: 1.8;
-	color: #818181;
+	color: #000000;
 }
 
 h2 {
@@ -85,9 +85,8 @@ h4 {
 }
 
 .nav__toggle {
-  color: red;
-  font-size: 100rem;
-  cursor: pointer;
+  color: #28ace5;
+  font-size: 1.5rem;
 }
 
 .navbar {
@@ -188,7 +187,6 @@ footer .glyphicon {
 }
   
 .slider {
-  -webkit-appearance: none;
   width: 100%;
   height: 15px;
   border-radius: 5px;  
@@ -221,6 +219,11 @@ footer .glyphicon {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.select-app::placeholder {
+    color: rgb(255, 255, 255); /* Ganti dengan warna yang Anda inginkan */
+}
+
 
 .select-app{
   appearance: none;
@@ -312,7 +315,7 @@ footer .glyphicon {
 }
 
 .github-btn:hover{
-  background-color: #cyan; 
+  background-color: #bbbbbb; 
 }
 
 .our-team{
@@ -554,19 +557,72 @@ ul {
     color: #24262b;
     background-color: #ffffff;
 }
-
-@media(max-width: 767px) {
-    .footer-col {
-        width: 50%;
-        margin-bottom: 30px;
-    }
-
+@media screen and (max-width: 360px) {
+  .footer-left h3 {
+    font-size: 18px; /* Ukuran font diperbesar untuk layar kecil */
+    text-align: left; /* Posisi teks ke kiri */
+    margin: 0; /* Menghilangkan margin untuk sejajar ke tepi layar */
+  }
+  .navbar-toggler {
+    display: block; 
+  }
+  .navbar-nav {
+    text-align: center; 
+  }
+  .nav-item {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+  #hasil_prediksi {
+    margin-top: 10px;
+  }
+  .result-list {
+    padding-left: 0;
+    list-style: none;
+    width: 100%;
+  }
+  .card-content {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .card-list {
+    padding-left: 0;
+  }
+  .card-item {
+    margin-bottom: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column; /* Menyusun elemen dalam satu kolom */
+  }
+  .item-icon {
+    margin-right: 0; /* Menghilangkan margin kanan pada ikon */
+    margin-bottom: 5px; /* Memberikan ruang di bawah ikon */
+  }
 }
-
 @media(max-width: 574px) {
+  .navbar-toggler {
+    display: block;
+  }
     .footer-col {
         width: 100%;
     }
+    .navbar-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-nav li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .col-lg-6,
+    .col-md-6,
+    .col-sm-6 {
+    width: 100%;
+    margin-bottom: 10px; /* Menambahkan margin bottom agar elemen-elemen terlihat lebih baik */
+  }  
 
 }
 
@@ -603,4 +659,81 @@ ul {
 .review .box .stars i{
   color:var(--black);
   font-size: 1.7rem;
+}
+
+@media screen {
+  img {
+    max-width: 100%; 
+    /* Anda dapat menyesuaikan ukuran maksimum sesuai kebutuhan */
+  }
+}
+@media screen and (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+}
+  .navbar-toggler {
+    display: block;
+}
+  .container {
+      text-align: center;
+  }
+
+  .opt-group {
+      display: block;
+  }
+
+  .mult-opt {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .select-app {
+      margin-bottom: 10px;
+  }
+  .col-lg-6,
+  .col-md-6,
+  .col-sm-6 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #hasil_prediksi {
+    margin-top: 10px;
+  }
+  .result-list {
+    padding-left: 0;
+    list-style: none;
+    width: 100%;
+  }
+  .card-content {
+    padding: 10px;
+    border: 1px solid #ddd; 
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .card-list {
+    padding-left: 0;
+  }
+  .card-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .item-icon {
+    margin-right: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .navbar-toggler {
+    display: none; 
+  }
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
