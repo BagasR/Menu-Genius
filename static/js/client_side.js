@@ -145,5 +145,7 @@ $(document).ready(function() {
     // Menyisipkan hasil rekomendasi ke dalam elemen HTML
     var hasilRekomendasi = document.getElementById("hasil_rekomendasi");
     hasilRekomendasi.innerHTML = rekomendasi_str;
+
+    $("#hasil_prediksi").html(str_prediksi)
   }
 })

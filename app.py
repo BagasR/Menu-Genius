@@ -47,13 +47,25 @@ def beranda():
 @app.route("/api/deteksi", methods=['POST'])
 def apiDeteksi():
     if request.method == 'POST':
-        input_harga_rata = float(request.form['Harga_Rata-rata'])
+        input_harga_rata = str(request.form['Harga_Rata-rata'])
         input_rating = float(request.form['rating'])
         input_kecamatan = str(request.form['kecamatan'])
         input_kabupaten = str(request.form['kabupaten'])
         input_cr_angka = str(request.form['crangka'])
 
-        # Membuat DataFrame dari input
+        # Nilai default untuk variabel input atau features (X) ke model
+        if input_harga_rata == "Harga_Rata-rata":
+            input_harga_rata = "15000"
+        if input_rating == "rating":
+            input_rating = 4.6
+        if input_kecamatan == "kecamatan":
+            input_kecamatan = "2"
+        if input_kabupaten == "kabupaten":
+            input_kabupaten = "2"
+        if input_cr_angka == "crangka":
+            input_cr_angka = "2"
+
+        # Load data ke dalam DataFrame
         df = pd.DataFrame(data={
             "Harga_Rata": [input_harga_rata],
             "rating": [input_rating],
@@ -77,10 +89,14 @@ def apiDeteksi():
                 "info_reting": peta_cr_angka.get(input_rating, {}),
                 "rekomendasi_restoran": []
             })
+        
+         # Cari nama restoran dan alamat sesuai dengan hasil prediksi dari peta
+        restoran_info = nama_restoran_peta.get(hasil_prediksi, {})
+        nama_restoran = restoran_info.get('nama_restoran', 'Restoran tidak ditemukan')
+        menu_makanan = restoran_info.get('menu_makanan', 'menu makananan tidak ditemukan')
+        alamat = restoran_info.get('alamat', 'Alamat tidak ditemukan')
+        harga = restoran_info.get('harga', 'Harga tidak ditemukan')
 
-
-        # membaca nilai input rating
-        print(f'Nilai input_rating: {input_rating}')
 
          # Mengambil nilai input lainnya dari peta
         input_harga = float(input_harga_rata)
