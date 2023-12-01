@@ -23,7 +23,13 @@ Untuk run programnya jalankan command berikut pada shell
 ```
 
 ## Screenshots
+![Halaman Informasi](https://github.com/BagasR/Menu-Genius/blob/main/static/images/menugenius_informasi.JPG?raw=true)
 
+![Halaman Pencarian](https://github.com/BagasR/Menu-Genius/blob/main/static/images/menugenius_pencarian.JPG?raw=true)
+
+![Halaman Hasil Pencarian](https://github.com/BagasR/Menu-Genius/blob/main/static/images/menugenius_hasilpencarian.JPG?raw=true)
+
+![Halaman Anggota](https://github.com/BagasR/Menu-Genius/blob/main/static/images/menugenius_anggota.jpeg?raw=true)
 
 
 
